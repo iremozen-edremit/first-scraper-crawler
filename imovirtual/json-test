@@ -1,0 +1,25 @@
+import csv
+import json
+
+with open('data.csv') as json_file:
+    data = json.load(json_file)
+    for p in range(0,3):
+        print(data[p]['fields']['codename'])
+
+
+employ_data = open('test.csv', 'w')
+
+# create the csv writer object
+csvwriter = csv.writer(employ_data)
+
+count = 0
+
+for emp in data:
+
+      if count == 0:
+             header = emp.keys()
+             csvwriter.writerow(header)
+             count += 1
+      csvwriter.writerow(emp.values())
+
+employ_data.close()
